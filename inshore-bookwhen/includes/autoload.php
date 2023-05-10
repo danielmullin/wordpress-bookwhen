@@ -12,7 +12,9 @@ spl_autoload_register(
 			return;
 		}
 		$relative_class = substr( $class, $len );
-		$file           = $base_dir . '/Vendor/' . str_replace( '\\', '/', $relative_class ) . '.php';
+	
+		$file           = $base_dir . '/' . str_replace( '\\', '/', $relative_class ) . '.php';
+//echo $file . "\n";
 		if ( file_exists( $file ) ) {
 			require_once $file;
 		}

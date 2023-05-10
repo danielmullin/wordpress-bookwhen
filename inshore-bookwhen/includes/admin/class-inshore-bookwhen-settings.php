@@ -19,9 +19,9 @@ class InShore_Bookwhen_Settings
         $this->plugin_name = $plugin_name;
         $this->init_hooks();
     }
-
+    
     /**
-     * 
+     *
      */
     private function init_hooks()
     {
@@ -41,17 +41,27 @@ class InShore_Bookwhen_Settings
             'administrator',
             'inshore-bookwhen',
             [$this, 'inshore_bookwhen_menu_page_html'],
-        );
+            );
         
         // API Settings page
-        add_submenu_page( 
-            $this->plugin_name, 
+        add_submenu_page(
+            $this->plugin_name,
             'Bookwhen API Settings',
             'API Settings',
             'administrator',
             $this->plugin_name . '-api-settings',
             [$this, 'inshore_bookwhen_api_settings_page_html']
-        );
+            );
+        
+        // Events preview page
+        add_submenu_page(
+            $this->plugin_name,
+            'Bookwhen Events',
+            'Events',
+            'administrator',
+            $this->plugin_name . '-events',
+            [$this, 'inshore_bookwhen_events_page_html']
+            );
         
         // Add additional settigns pages here
     }
@@ -67,10 +77,10 @@ class InShore_Bookwhen_Settings
         // Register a new section in the "wporg" page.
         add_settings_section(
             'inshore_bookwhen_api',
-            __( 'Bookwhen API', 'inshore-bookwhen' ), 
+            __( 'Bookwhen API', 'inshore-bookwhen' ),
             [$this, 'inshore_bookwhen_api_callback'],
             'inshore-bookwhen'
-         );
+            );
         
         add_settings_field(
             'inshore_bookwhen_api_key',
@@ -83,7 +93,7 @@ class InShore_Bookwhen_Settings
                 'class'             => 'wporg_row',
                 'wporg_custom_data' => 'custom',
             )
-        );
+            );
     }
     
     
@@ -645,5 +655,23 @@ $client->ticket('ti-sboe-20200320100000-tk1m', includeAttachments: true););
 		</form>
 	</div>
 	<?php
+    }
+    
+    /**
+     * Top level menu callback function
+     */
+    public function inshore_bookwhen_events_page_html() {
+        // check user capabilities
+        if ( ! current_user_can( 'manage_options' ) ) {
+            return;
+        }
+        $options = get_option( 'bookwhen_options' );
+
+        $bookwhen = new InShore\Bookwhen\Vendor\InShore\Bookwhen\Bookwhen(null, InShore\Bookwhen\Vendor\InShore\Bookwhen\BookwhenApi::factory()
+        ->withApiKey($options['inshore_bookwhen_api_key'])
+        ->withHttpClient(new \InShore\Bookwhen\Vendor\GuzzleHttp\Client())
+        ->make());
+        //$bookwhen = new InShore\Bookwhen\Vendor\InShore\Bookwhen\Bookwhen($options['inshore_bookwhen_api_key']); 
+        var_export($bookwhen->events());
     }
 }
