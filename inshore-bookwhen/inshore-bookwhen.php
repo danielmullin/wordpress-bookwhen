@@ -32,6 +32,8 @@ if ( !function_exists( 'add_filter' ) ) {
     exit();
 }
 
+require_once 'includes/autoload.php';
+
 // Define the plugin file constant.
 if (!defined('INSHORE_BOOKWHEN_FILE')) {
     define('INSHORE_BOOKWHEN_FILE', __FILE__);

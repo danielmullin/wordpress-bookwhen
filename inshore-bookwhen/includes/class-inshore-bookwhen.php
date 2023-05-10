@@ -100,7 +100,6 @@ class InShore_Bookwhen
      */
     private function includes()
     {
-        require_once INSHORE_BOOKWHEN_PLUGIN_DIR . 'vendor-scoped/autoload.php';
         require_once INSHORE_BOOKWHEN_PLUGIN_DIR . 'includes/admin/class-inshore-bookwhen-settings.php';
     }
     
