@@ -41,7 +41,6 @@ return [
     // For more see: https://github.com/humbug/php-scoper/blob/master/docs/configuration.md#finders-and-paths
     'finders' => [
         /*
-        Finder::create()->files()->in('src'),
         Finder::create()
             ->files()
             ->ignoreVCS(true)
@@ -54,11 +53,12 @@ return [
                 'Tests',
                 'vendor-bin',
             ])
-            ->in('vendor'),
+            ->in('vendor/inshore'),
         Finder::create()->append([
             'composer.json',
         ]),
         */
+        Finder::create()->files()->in('src'),
     ],
 
     // List of excluded files, i.e. files for which the content will be left untouched.
@@ -67,6 +67,10 @@ return [
     // For more see: https://github.com/humbug/php-scoper/blob/master/docs/configuration.md#patchers
     'exclude-files' => [
         // 'src/an-excluded-file.php',
+        'inshore-bookwhen.php',
+        'inshore-bookwhen/includes/class-inshore-bookwhen.php',
+        'inshore-bookwhen/includes/admin/class-inshore-bookwhen-settings.php',
+        'inshore-bookwhen/includes/admin/inshore-bookwhen-fields.php',
         ...$excludedFiles,
     ],
 
@@ -88,7 +92,12 @@ return [
     //
     // For more information see: https://github.com/humbug/php-scoper/blob/master/docs/configuration.md#excluded-symbols
     'exclude-namespaces' => [
-        // 'Acme\Foo'                     // The Acme\Foo namespace (and sub-namespaces)
+        'Fidry\Console',
+        'Humbug\PhpScoper',
+        'JetBrains\PhpStorm',
+        'PhpParser',
+        'Safe\Exceptions',
+        'Webmozart\Assert',
         // '~^PHPUnit\\\\Framework$~',    // The whole namespace PHPUnit\Framework (but not sub-namespaces)
         // '~^$~',                        // The root namespace only
         // '',                            // Any namespace

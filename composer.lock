@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bca9441f9cb920db76c1f58164f2c529",
+    "content-hash": "eabcdc8b5f3fa525abc919d833becbbf",
     "packages": [
         {
             "name": "fidry/console",
@@ -502,16 +502,16 @@
         },
         {
             "name": "inshore/bookwhen",
-            "version": "dev-develop",
+            "version": "0.9.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/inshore/bookwhen.git",
-                "reference": "91d1f8c7c337a94d563a3cb94fe38e514861dbe5"
+                "reference": "42449e52d7b7009be40c8867b4f150de20aef589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/inshore/bookwhen/zipball/91d1f8c7c337a94d563a3cb94fe38e514861dbe5",
-                "reference": "91d1f8c7c337a94d563a3cb94fe38e514861dbe5",
+                "url": "https://api.github.com/repos/inshore/bookwhen/zipball/42449e52d7b7009be40c8867b4f150de20aef589",
+                "reference": "42449e52d7b7009be40c8867b4f150de20aef589",
                 "shasum": ""
             },
             "require": {
@@ -529,7 +529,6 @@
             "require-dev": {
                 "phpunit/phpunit": "^10.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -561,9 +560,9 @@
             ],
             "support": {
                 "issues": "https://github.com/inshore/bookwhen/issues",
-                "source": "https://github.com/inshore/bookwhen/tree/develop"
+                "source": "https://github.com/inshore/bookwhen/tree/0.9.16"
             },
-            "time": "2023-05-08T09:52:41+00:00"
+            "time": "2023-05-08T09:53:24+00:00"
         },
         {
             "name": "jetbrains/phpstorm-stubs",
@@ -2585,7 +2584,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "inshore/bookwhen": 20,
         "humbug/php-scoper": 20
     },
     "prefer-stable": false,
